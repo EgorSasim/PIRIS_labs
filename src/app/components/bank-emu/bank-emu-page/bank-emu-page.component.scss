@@ -1,0 +1,17 @@
+.bank-emu-page__footer {
+  padding: 0.8rem;
+  padding-top: 2rem;
+}
+
+.bank-emu-page__spinner-wrap {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

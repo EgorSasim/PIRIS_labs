@@ -1,0 +1,15 @@
+<button mat-raised-button color="primary" (click)="goToHomePage()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<div class="atm-body">
+  <router-outlet>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="goToCardNumberPage()"
+      [style.display]="getCurrNav() === '/atm' ? 'block' : 'none'"
+    >
+      Start
+    </button>
+  </router-outlet>
+</div>

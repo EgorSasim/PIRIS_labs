@@ -1,0 +1,26 @@
+<button mat-raised-button color="primary" (click)="goToHomePage()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+
+<ng-container *ngIf="(userCardList$ | async)?.length; else emptyListLabel">
+  <button mat-raised-button color="primary" (click)="sortUserCardList()">
+    Sort by Last names
+  </button>
+  <app-user-card-list
+    [cardList]="userCardList$ | async"
+    (userRemove)="removeUser($event)"
+  ></app-user-card-list>
+</ng-container>
+
+<ng-template #emptyListLabel>
+  <h1 class="user-page__empty-list-label">No bank users added</h1>
+</ng-template>
+
+<button
+  class="user-page__add-user-button"
+  mat-fab
+  color="primary"
+  (click)="showAddUserModal()"
+>
+  <mat-icon>add</mat-icon>
+</button>

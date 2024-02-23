@@ -1,0 +1,26 @@
+<div class="card-number-page">
+  <h3>Enter card number</h3>
+  <mat-form-field class="example-full-width">
+    <mat-label>Card number</mat-label>
+    <input
+      matInput
+      type="number"
+      value="1234567891234567"
+      placeholder="enter card number"
+      #cardNumber
+    />
+  </mat-form-field>
+  <br />
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="searchBankCardBySerialNumber(+cardNumber.value)"
+    [disabled]="isLoading$ | async"
+  >
+    Submit
+  </button>
+</div>
+
+<div *ngIf="isLoading$ | async" class="card-number-page__spinner-wrap">
+  <mat-spinner></mat-spinner>
+</div>

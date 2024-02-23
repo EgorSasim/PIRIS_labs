@@ -1,0 +1,87 @@
+<button mat-raised-button color="primary" (click)="goToHomePage()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+
+<h1>Deposits</h1>
+<ng-container
+  *ngIf="depositContractsWithAccounts$ | async as depositContractsWithAccounts"
+>
+  <div *ngFor="let depositContractWithAccounts of depositContractsWithAccounts">
+    <h2>
+      {{ depositContractWithAccounts.depositContract.deposit.name }} :
+      {{ depositContractWithAccounts.depositContract.serialNumber }}
+    </h2>
+    <div>
+      Start Date: {{ depositContractWithAccounts.depositContract.startDate }}
+      <br />
+      End Date: {{ depositContractWithAccounts.depositContract.endDate }}
+    </div>
+    <div>
+      Initial deposit: {{ depositContractWithAccounts.depositContract.amount }}
+    </div>
+    <div>
+      Percent: {{ depositContractWithAccounts.depositContract.deposit.percent }}
+    </div>
+    <div>
+      Percents debit: {{ depositContractWithAccounts.accounts.percents.debit }}
+    </div>
+    <div>
+      Percents total income:
+      {{ depositContractWithAccounts.accounts.percents.totalAmount }}
+    </div>
+    <hr />
+  </div>
+</ng-container>
+
+<h1>Credits</h1>
+<ng-container
+  *ngIf="creditContractsWithAccounts$ | async as creditContractsWithAccounts"
+>
+  <div *ngFor="let creditContractWithAccounts of creditContractsWithAccounts">
+    <h2>
+      {{ creditContractWithAccounts.creditContract.credit.name }} :
+      {{ creditContractWithAccounts.creditContract.serialNumber }}
+    </h2>
+    <div>
+      Start Date: {{ creditContractWithAccounts.creditContract.startDate }}
+      <br />
+      End Date: {{ creditContractWithAccounts.creditContract.endDate }}
+    </div>
+    <div>
+      Initial credit: {{ creditContractWithAccounts.creditContract.amount }}
+    </div>
+    <div>
+      Percent: {{ creditContractWithAccounts.creditContract.credit.percent }}
+    </div>
+    <div>
+      Percents credit: {{ creditContractWithAccounts.accounts.percents.credit }}
+    </div>
+    <div>
+      Percents total income:
+      {{ creditContractWithAccounts.accounts.percents.totalAmount }}
+    </div>
+    <hr />
+  </div>
+</ng-container>
+
+<footer class="bank-emu-page__footer">
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="isLoading$ | async"
+    (click)="handleTick()"
+  >
+    Tick
+  </button>
+  <br />
+  <span>Curr Date: {{ currentDate$ | async | date : "dd/MM/yy" }}</span>
+  <h3>Bank Account Val: {{ bankAccountVal$ | async }}</h3>
+  <br />
+  <h4>Total Debit: {{ totalDebits$ | async }}</h4>
+  <br />
+  <h4>Total Credit {{ totalCredits$ | async }}</h4>
+</footer>
+
+<div *ngIf="isLoading$ | async" class="bank-emu-page__spinner-wrap">
+  <mat-spinner></mat-spinner>
+</div>

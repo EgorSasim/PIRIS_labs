@@ -1,0 +1,19 @@
+.home-page-nav-item {
+  background-color: lightblue;
+}
+
+.home-page-nav-item__link {
+  color: white;
+  font-family: helvetica;
+  font-weight: 1000;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: black;
+  }
+}

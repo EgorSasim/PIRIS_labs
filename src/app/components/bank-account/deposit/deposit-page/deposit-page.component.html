@@ -1,0 +1,138 @@
+<button mat-raised-button color="primary" (click)="goToBankAccountPage()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<ng-container *ngIf="depositData$ | async as depositData">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title
+        >"{{ depositData?.depositContract.deposit.name }}"</mat-card-title
+      >
+      <mat-card-subtitle>{{
+        depositData.depositContract.deposit.type
+      }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="deposit-page-main-info">
+        <div
+          class="deposit-page-main-info__side"
+          *ngIf="depositData?.depositContract as depositContract"
+        >
+          <h2>DepositContract</h2>
+          <mat-list>
+            <mat-list-item>
+              <span matListItemTitle>Serial Number</span>
+              <span matListItemLine>{{ depositContract.serialNumber }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Start Date</span>
+              <span matListItemLine>{{
+                getDateByTimeStamp(depositContract.startDate)
+              }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>End Date</span>
+              <span matListItemLine>{{ depositContract.endDate }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Duration</span>
+              <span matListItemLine>{{ depositContract.duration }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Amount</span>
+              <span matListItemLine>{{ depositContract.amount }}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div
+          class="deposit-page-main-info__side"
+          *ngIf="depositData.depositContract.deposit as deposit"
+        >
+          <h2>Deposit</h2>
+          <mat-list>
+            <mat-list-item>
+              <span matListItemTitle>Name</span>
+              <span matListItemLine>{{ deposit.name }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Min duration time</span>
+              <span matListItemLine>{{ deposit.minDurationTime }} months</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Max duration time</span>
+              <span matListItemLine>{{ deposit.maxDurationTime }} months</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Min Amout</span>
+              <span matListItemLine>{{ deposit.minAmount }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Type</span>
+              <span matListItemLine>{{ deposit.type }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Percent</span>
+              <span matListItemLine>{{ deposit.percent }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Currency</span>
+              <span matListItemLine>{{ deposit.currencyType }}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
+      <div class="deposit-page-accounts">
+        <div
+          class="deposit-page-accounts__side"
+          *ngIf="depositData.accounts.main as mainAccount"
+        >
+          <h2>Main account</h2>
+          <mat-list>
+            <mat-list-item>
+              <span matListItemTitle>Debit</span>
+              <span matListItemLine>{{ mainAccount.debit }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Serial number</span>
+              <span matListItemLine>{{ mainAccount.serialNumber }}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div
+          class="deposit-page-accounts__side"
+          *ngIf="depositData.accounts.percents as percentsAccount"
+        >
+          <h2>Percents account</h2>
+          <mat-list>
+            <mat-list-item>
+              <span matListItemTitle>Debit</span>
+              <span matListItemLine>{{ percentsAccount.debit }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Serial number</span>
+              <span matListItemLine>{{ percentsAccount.serialNumber }}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="goToBankAccountPage()">
+        Close
+      </button>
+      <button
+        *ngIf="depositData.depositContract.deposit.type === 'Revocable'"
+        mat-raised-button
+        color="warn"
+        (click)="
+          revoceDeposit(
+            depositData.depositContract.userId,
+            depositData.depositContract.id
+          )
+        "
+      >
+        Revoce
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

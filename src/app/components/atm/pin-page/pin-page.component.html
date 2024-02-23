@@ -1,0 +1,20 @@
+<div class="pin-page">
+  <h3>Enter PIN</h3>
+  <mat-form-field>
+    <mat-label>PIN</mat-label>
+    <input matInput type="number" value="1111" placeholder="enter PIN" #PIN />
+  </mat-form-field>
+  <br />
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="validatePin(+PIN.value)"
+    [disabled]="isLoading$ | async"
+  >
+    Submit
+  </button>
+</div>
+
+<div *ngIf="isLoading$ | async" class="pin-page__spinner-wrap">
+  <mat-spinner></mat-spinner>
+</div>

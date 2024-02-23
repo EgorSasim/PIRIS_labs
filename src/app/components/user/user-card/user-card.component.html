@@ -1,0 +1,14 @@
+<div class="user-card">
+  <div class="user-card__item">{{ card.firstName }}</div>
+  <div class="user-card__item">{{ card.lastName }}</div>
+  <div class="user-card__item">{{ card.passportNumber }}</div>
+  <div class="user-card__item">{{ card.passportSeries }}</div>
+  <button
+    mat-mini-fab
+    color="primary"
+    aria-label="delete user"
+    (click)="removeUser($event, card.id)"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

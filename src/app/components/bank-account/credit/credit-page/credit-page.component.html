@@ -1,0 +1,118 @@
+<button mat-raised-button color="primary" (click)="goToBankAccountPage()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<ng-container *ngIf="creditData$ | async as creditData">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title
+        >"{{ creditData?.creditContract.credit.name }}"</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <div class="credit-page-main-info">
+        <div
+          class="credit-page-main-info__side"
+          *ngIf="creditData?.creditContract as creditContract"
+        >
+          <h2>Credit Contract</h2>
+          <mat-list>
+            <mat-list-item>
+              <span matListItemTitle>Serial Number</span>
+              <span matListItemLine>{{ creditContract.serialNumber }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Start Date</span>
+              <span matListItemLine>{{
+                getDateByTimeStamp(creditContract.startDate)
+              }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>End Date</span>
+              <span matListItemLine>{{ creditContract.endDate }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Duration</span>
+              <span matListItemLine>{{ creditContract.duration }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Amount</span>
+              <span matListItemLine>{{ creditContract.amount }}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div
+          class="credit-page-main-info__side"
+          *ngIf="creditData.creditContract.credit as credit"
+        >
+          <h2>Credit</h2>
+          <mat-list>
+            <mat-list-item>
+              <span matListItemTitle>Name</span>
+              <span matListItemLine>{{ credit.name }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Min duration time</span>
+              <span matListItemLine>{{ credit.minDurationTime }} months</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Max duration time</span>
+              <span matListItemLine>{{ credit.maxDurationTime }} months</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Min Amout</span>
+              <span matListItemLine>{{ credit.minAmount }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Percent</span>
+              <span matListItemLine>{{ credit.percent }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Currency</span>
+              <span matListItemLine>{{ credit.currencyType }}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+
+      <div class="credit-page-accounts">
+        <div
+          class="credit-page-accounts__side"
+          *ngIf="creditData.accounts.main as mainAccount"
+        >
+          <h2>Main account</h2>
+          <mat-list>
+            <mat-list-item>
+              <span matListItemTitle>Debit</span>
+              <span matListItemLine>{{ mainAccount.credit }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Serial number</span>
+              <span matListItemLine>{{ mainAccount.serialNumber }}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+        <div
+          class="credit-page-accounts__side"
+          *ngIf="creditData.accounts.percents as percentsAccount"
+        >
+          <h2>Percents account</h2>
+          <mat-list>
+            <mat-list-item>
+              <span matListItemTitle>Debit</span>
+              <span matListItemLine>{{ percentsAccount.credit }}</span>
+            </mat-list-item>
+            <mat-list-item>
+              <span matListItemTitle>Serial number</span>
+              <span matListItemLine>{{ percentsAccount.serialNumber }}</span>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="goToBankAccountPage()">
+        Close
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>

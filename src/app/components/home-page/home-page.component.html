@@ -1,0 +1,11 @@
+<mat-grid-list cols="2" rowHeight="29rem">
+  <mat-grid-tile
+    *ngFor="let tile of tiles"
+    class="home-page-nav-item"
+    [colspan]="tile.cols"
+    [rowspan]="tile.rows"
+    ><a class="home-page-nav-item__link" [href]="tile.link">{{
+      tile.text
+    }}</a></mat-grid-tile
+  >
+</mat-grid-list>

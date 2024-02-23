@@ -1,0 +1,313 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>New User</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="create-user-modal__content">
+    <div class="create-user-modal__content-side">
+      <mat-form-field appearance="outline">
+        <mat-label>Enter first name</mat-label>
+        <input
+          matInput
+          placeholder="First name"
+          [formControl]="formGroup.controls['firstName']"
+        />
+        <mat-error *ngIf="formGroup.controls['firstName'].errors">
+          {{
+            getErrorMessage(formGroup.controls["firstName"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter last name</mat-label>
+        <input
+          matInput
+          placeholder="last name"
+          [formControl]="formGroup.controls['lastName']"
+        />
+        <mat-error *ngIf="formGroup.controls['lastName'].errors">
+          {{
+            getErrorMessage(formGroup.controls["lastName"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter middle name</mat-label>
+        <input
+          matInput
+          placeholder="Middle name"
+          [formControl]="formGroup.controls['middleName']"
+        />
+        <mat-error *ngIf="formGroup.controls['middleName'].errors">
+          {{
+            getErrorMessage(formGroup.controls["middleName"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter passport series</mat-label>
+        <input
+          matInput
+          placeholder="Passport series"
+          [formControl]="formGroup.controls['passportSeries']"
+        />
+        <mat-error *ngIf="formGroup.controls['passportSeries'].errors">
+          {{
+            getErrorMessage(formGroup.controls["passportSeries"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter passport number</mat-label>
+        <input
+          matInput
+          placeholder="Passport number"
+          [formControl]="formGroup.controls['passportNumber']"
+        />
+        <mat-error *ngIf="formGroup.controls['passportNumber'].errors">
+          {{
+            getErrorMessage(formGroup.controls["passportNumber"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter who issue passport</mat-label>
+        <input
+          matInput
+          placeholder="Issued by"
+          [formControl]="formGroup.controls['issuedBy']"
+        />
+        <mat-error *ngIf="formGroup.controls['issuedBy'].errors">
+          {{
+            getErrorMessage(formGroup.controls["issuedBy"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Enter identification number</mat-label>
+        <input
+          matInput
+          placeholder="Identification number"
+          [formControl]="formGroup.controls['identificationNumber']"
+        />
+        <mat-error *ngIf="formGroup.controls['identificationNumber'].errors">
+          {{
+            getErrorMessage(formGroup.controls["identificationNumber"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter place of birth</mat-label>
+        <input
+          matInput
+          placeholder="Place of birth"
+          [formControl]="formGroup.controls['placeOfBirth']"
+        />
+        <mat-error *ngIf="formGroup.controls['placeOfBirth'].errors">
+          {{
+            getErrorMessage(formGroup.controls["placeOfBirth"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter actualResidenceAddress</mat-label>
+        <input
+          matInput
+          placeholder="actualResidenceAddress"
+          [formControl]="formGroup.controls['actualResidenceAddress']"
+        />
+        <mat-error *ngIf="formGroup.controls['actualResidenceAddress'].errors">
+          {{
+            getErrorMessage(formGroup.controls["actualResidenceAddress"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter monthlyIncome</mat-label>
+        <input
+          matInput
+          placeholder="monthlyIncome"
+          [formControl]="formGroup.controls['monthlyIncome']"
+        />
+        <mat-icon matSuffix>attach_money</mat-icon>
+        <mat-error *ngIf="formGroup.controls['monthlyIncome'].errors">
+          {{
+            getErrorMessage(formGroup.controls["monthlyIncome"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter mobilePhoneNumber </mat-label>
+        <input
+          matInput
+          placeholder="mobilePhoneNumber"
+          [formControl]="formGroup.controls['mobilePhoneNumber']"
+        />
+        <mat-error *ngIf="formGroup.controls['mobilePhoneNumber'].errors">
+          {{
+            getErrorMessage(formGroup.controls["mobilePhoneNumber"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter email</mat-label>
+        <input
+          matInput
+          placeholder="email"
+          [formControl]="formGroup.controls['email']"
+        />
+        <mat-error *ngIf="formGroup.controls['email'].errors">
+          {{ getErrorMessage(formGroup.controls["email"].errors) }}</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Enter workPlace</mat-label>
+        <input
+          matInput
+          placeholder="workPlace"
+          [formControl]="formGroup.controls['workPlace']"
+        />
+        <mat-error *ngIf="formGroup.controls['workPlace'].errors">
+          {{
+            getErrorMessage(formGroup.controls["workPlace"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter workPosition</mat-label>
+        <input
+          matInput
+          placeholder="workPosition"
+          [formControl]="formGroup.controls['workPosition']"
+        />
+        <mat-error *ngIf="formGroup.controls['workPosition'].errors">
+          {{
+            getErrorMessage(formGroup.controls["workPosition"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter homePhoneNumber</mat-label>
+        <input
+          matInput
+          placeholder="homePhoneNumber"
+          [formControl]="formGroup.controls['homePhoneNumber']"
+        />
+        <mat-error *ngIf="formGroup.controls['homePhoneNumber'].errors">
+          {{
+            getErrorMessage(formGroup.controls["homePhoneNumber"].errors)
+          }}</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="create-user-modal__content-side">
+      <mat-form-field>
+        <mat-label>Enter date of issue</mat-label>
+        <input
+          matInput
+          required
+          [matDatepicker]="dp2"
+          [formControl]="formGroup.controls['dateOfIssue']"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="dp2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Birth date</mat-label>
+        <input
+          matInput
+          required
+          [matDatepicker]="dp1"
+          [formControl]="formGroup.controls['birthDate']"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="dp1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #dp1 disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="create-user-modal__content-side">
+      <mat-form-field>
+        <mat-label>Choose actualResidenceCity</mat-label>
+        <select
+          matNativeControl
+          [formControl]="formGroup.controls['actualResidenceCity']"
+        >
+          <option value="" selected></option>
+          <option *ngFor="let city of residenceCities">
+            {{ city }}
+          </option>
+        </select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter martialStatus</mat-label>
+        <select
+          matNativeControl
+          [formControl]="formGroup.controls['martialStatus']"
+        >
+          <option value="" selected></option>
+          <option *ngFor="let martialStatus of martialStatuses">
+            {{ martialStatus }}
+          </option>
+        </select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Choose citizenship</mat-label>
+        <select
+          matNativeControl
+          [formControl]="formGroup.controls['citizenship']"
+        >
+          <option value="" selected></option>
+          <option *ngFor="let citizenship of citizenShips">
+            {{ citizenship }}
+          </option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Choose disability</mat-label>
+        <select
+          matNativeControl
+          [formControl]="formGroup.controls['disability']"
+        >
+          <option value="" selected></option>
+          <option *ngFor="let disability of disabilities">
+            {{ disability }}
+          </option>
+        </select>
+      </mat-form-field>
+      <div>
+        <mat-checkbox
+          class="example-margin"
+          [formControl]="formGroup.controls['conscript']"
+          >Conscript</mat-checkbox
+        >
+      </div>
+      <div>
+        <mat-checkbox
+          class="example-margin"
+          [formControl]="formGroup.controls['pensionary']"
+          >Pensionary</mat-checkbox
+        >
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="create-user-modal__footer">
+    <button mat-raised-button color="warn" (click)="onClose()">Close</button>
+    <button mat-raised-button color="primary" (click)="fillUserData()">
+      Autofill
+    </button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Submit
+    </button>
+  </mat-card-actions>
+</mat-card>

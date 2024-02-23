@@ -1,0 +1,162 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>New Credit</mat-card-title>
+    <mat-card-subtitle>Create new credit</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="create-credit-modal-controls">
+      <div class="create-credit-modal-controls__side">
+        <mat-form-field appearance="outline">
+          <mat-label>Serial number</mat-label>
+          <input
+            matInput
+            placeholder="Serial number"
+            [formControl]="formGroup.controls['serialNumber']"
+          />
+          <mat-error *ngIf="formGroup.controls['serialNumber'].errors">
+            {{
+              getErrorMessage(formGroup.controls["serialNumber"].errors)
+            }}</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label>Amount</mat-label>
+          <input
+            required
+            matInput
+            type="number"
+            class="create-credit-modal__amount-control"
+            placeholder="0"
+            [formControl]="formGroup.controls['amount']"
+          />
+          <span matTextPrefix>$&nbsp;</span>
+          <span matTextSuffix>.00</span>
+          <mat-error *ngIf="formGroup.controls['amount'].errors">
+            {{
+              getErrorMessage(formGroup.controls["amount"].errors)
+            }}</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="create-credit-modal-controls__side">
+        <mat-form-field>
+          <mat-label>Choose start date</mat-label>
+          <input
+            matInput
+            required
+            [matDatepicker]="dp1"
+            [formControl]="formGroup.controls['startDate']"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="dp1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #dp1 disabled="false"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Choose end date</mat-label>
+          <input
+            matInput
+            required
+            [matDatepicker]="dp2"
+            [formControl]="formGroup.controls['endDate']"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="dp2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Choose duration</mat-label>
+          <input
+            matInput
+            required
+            [matDatepicker]="dp3"
+            [formControl]="formGroup.controls['duration']"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="dp3"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="create-credit-modal-controls__side">
+        <mat-form-field>
+          <mat-label>Choose credit</mat-label>
+          <select matNativeControl [formControl]="creditNameControl">
+            <option value="" selected></option>
+            <option *ngFor="let credit of credits" [value]="credit.name">
+              {{ credit.name }}
+            </option>
+          </select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Choose user</mat-label>
+          <select matNativeControl [formControl]="formGroup.controls['userId']">
+            <option value="" selected></option>
+            <option
+              *ngFor="let userInfo of usersInfo$ | async"
+              [value]="userInfo.id"
+            >
+              {{
+                userInfo.firstName + " " + userInfo.lastName + " " + userInfo.id
+              }}
+            </option>
+          </select>
+        </mat-form-field>
+        <div>
+          <a href="/user-page">Create user</a>
+        </div>
+      </div>
+    </div>
+
+    <mat-form-field
+      class="create-credit-modal-controls__credit-description-control"
+    >
+      <mat-label>Credit description </mat-label>
+      <textarea
+        class="create-credit-modal-controls__credit-description-text"
+        matInput
+        [disabled]="true"
+        [value]="creditDescription$ | async"
+        placeholder="Ex. It makes me feel..."
+      ></textarea>
+    </mat-form-field>
+    <ng-container>
+      <div
+        class="create-credit-modal-controls__errors"
+        *ngIf="formGroup?.errors?.['dateCompareError']"
+      >
+        Possible errors: <br />
+        1.Start date cannot be more than end date <br />
+        2.Duration cannot be less than end date <br />
+      </div>
+      <div
+        class="create-credit-modal-controls__errors"
+        *ngIf="formGroup?.errors?.['invalidCreditDuration']"
+      >
+        Choosen dates interval not compared with credit min or max duration
+      </div>
+      <div
+        class="create-credit-modal-controls__errors"
+        *ngIf="formGroup?.errors?.['invalidCreditAmount']"
+      >
+        Invalid credit amount
+      </div>
+    </ng-container>
+  </mat-card-content>
+  <mat-card-actions class="create-credit-modal__footer">
+    <button mat-raised-button color="warn" (click)="onClose()">Close</button>
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Submit
+    </button>
+  </mat-card-actions>
+</mat-card>

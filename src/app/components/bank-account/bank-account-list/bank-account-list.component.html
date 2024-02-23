@@ -1,0 +1,41 @@
+<header class="bank-account-list__header">
+  <div class="bank-account-list__header-item">User first Name</div>
+  <div class="bank-account-list__header-item">User last Name</div>
+  <div class="bank-account-list__header-item">User identification number</div>
+  <div class="bank-account-list__header-item">Deposit name</div>
+  <div class="bank-account-list__header-item">Deposit serial number</div>
+</header>
+
+<h3>Deposits</h3>
+<mat-list role="list">
+  <ng-container *ngFor="let accountInfo of depositAccountsInfo; let i = index">
+    <ng-container *ngFor="let contract of accountInfo.depositContracts">
+      <mat-list-item
+        role="listitem"
+        (click)="goToDepositPage(contract.id, accountInfo.user.id)"
+      >
+        <app-bank-account-card
+          [accountInfo]="{ contract: contract, user: accountInfo.user }"
+        ></app-bank-account-card>
+      </mat-list-item>
+    </ng-container>
+    <mat-divider *ngIf="depositAccountsInfo?.length - 1 !== i"></mat-divider>
+  </ng-container>
+</mat-list>
+
+<h3>Credits</h3>
+<mat-list role="list">
+  <ng-container *ngFor="let accountInfo of creditAccountsInfo; let i = index">
+    <ng-container *ngFor="let contract of accountInfo.creditContracts">
+      <mat-list-item
+        role="listitem"
+        (click)="goToCreditPage(contract.id, accountInfo.user.id)"
+      >
+        <app-bank-account-card
+          [accountInfo]="{ contract: contract, user: accountInfo.user }"
+        ></app-bank-account-card>
+      </mat-list-item>
+    </ng-container>
+    <mat-divider *ngIf="creditAccountsInfo?.length - 1 !== i"></mat-divider>
+  </ng-container>
+</mat-list>

@@ -1,0 +1,14 @@
+.bank-account-card {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.bank-account-card__item {
+  overflow: hidden;
+  margin-right: 0.8rem;
+  flex-basis: 100%;
+}

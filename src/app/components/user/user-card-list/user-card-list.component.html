@@ -1,0 +1,19 @@
+<ng-container *ngIf="cardList?.length">
+  <header class="user-card-list__header">
+    <div class="user-card-list__header-item">First Name</div>
+    <div class="user-card-list__header-item">Last Name</div>
+    <div class="user-card-list__header-item">Passport Number</div>
+    <div class="user-card-list__header-item">Paspport Series</div>
+  </header>
+  <mat-list role="list">
+    <ng-container *ngFor="let card of cardList; let i = index">
+      <mat-list-item role="listitem" (click)="goToEditPage(card.id)">
+        <app-user-card
+          [card]="card"
+          (remove)="removeUser($event)"
+        ></app-user-card>
+      </mat-list-item>
+      <mat-divider *ngIf="cardList?.length - 1 !== i"></mat-divider
+    ></ng-container>
+  </mat-list>
+</ng-container>

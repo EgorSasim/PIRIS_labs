@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pirislabs-b82eb": {
+      "hosting": {
+        "lab1": [
+          "pirislabs-b82eb"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pirislabs-b82eb"
+  }
+}

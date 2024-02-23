@@ -1,0 +1,19 @@
+.credit-page-main-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.credit-page-main-info__side {
+  flex-basis: 100%;
+}
+
+.credit-page-accounts {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.credit-page-accounts__side {
+  flex-basis: 100%;
+}
